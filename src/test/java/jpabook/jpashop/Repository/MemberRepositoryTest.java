@@ -1,6 +1,6 @@
 package jpabook.jpashop.Repository;
 
-import jpabook.jpashop.Entity.Member;
+import jpabook.jpashop.domain.Member;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
