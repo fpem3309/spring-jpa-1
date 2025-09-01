@@ -14,11 +14,11 @@ public class ItemRepository {
 
     private final EntityManager em;
 
-    public void save(Member member) {
-        if (member.getId() == null) {
-            em.persist(member);
+    public void save(Item item) {
+        if (item.getId() == null) {
+            em.persist(item);
         } else {
-            em.merge(member);
+            em.merge(item);
         }
     }
 
