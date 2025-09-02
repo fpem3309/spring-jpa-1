@@ -60,7 +60,10 @@ public class ItemController {
     }
 
     @PostMapping("/items/{itemId}/edit")
-    public String updateItem(@ModelAttribute BookForm bookForm) {
+    public String updateItem(@PathVariable Long itemId, @ModelAttribute BookForm bookForm) {
+
+
+/*      ❗컨트롤러에서 어설프게 인티티 생성 X
         Book book = new Book();
         book.setId(bookForm.getId());
         book.setName(bookForm.getName());
@@ -68,8 +71,10 @@ public class ItemController {
         book.setStockQuantity(bookForm.getStockQuantity());
         book.setAuthor(bookForm.getAuthor());
         book.setIsbn(bookForm.getIsbn());
-
         itemService.saveItem(book);
+*/
+        itemService.updateItem(itemId, bookForm.getName(), bookForm.getPrice(), bookForm.getStockQuantity());
+
         return "redirect:/items";
     }
 
