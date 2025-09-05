@@ -118,4 +118,15 @@ public class OrderRepository {
                         " join o.delivery d", OrderSimpleQueryDto.class)
                 .getResultList();
     }
+
+    public List<Order> findAllWithItem() {
+        // ⭐️hibernate6부터 자동으로 distinct
+        // Order(Root Entity)의 식별자를 사용해서 중복 제거해줌
+        return em.createQuery("select o from Order o" +
+                        " join fetch o.member m" + // toOne
+                        " join fetch o.delivery d" + // toOne
+                        " join fetch o.orderItems oi" + // toMany
+                        " join fetch oi.item i", Order.class) // toMany
+                .getResultList();
+    }
 }
